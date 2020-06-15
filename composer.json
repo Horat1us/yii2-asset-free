@@ -1,0 +1,33 @@
+{
+    "name": "horat1us/yii2-asset-free",
+    "description": "Disable bower-asset for Yii2",
+    "type": "library",
+    "require": {
+        "yiisoft/yii2": "^2.0.35"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "horat1us",
+            "email": "reclamme@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "replace": {
+        "bower-asset/jquery": "*",
+        "bower-asset/jquery.inputmask": "*",
+        "bower-asset/inputmask": "*",
+        "bower-asset/punycode": "*",
+        "bower-asset/yii2-pjax": "*"
+    },
+    "conflict": {
+        "bower-asset/jquery": "*",
+        "bower-asset/jquery.inputmask": "*",
+        "bower-asset/inputmask": "*",
+        "bower-asset/punycode": "*",
+        "bower-asset/yii2-pjax": "*"
+    },
+    "scripts": {
+        "test": "./test.sh"
+    }
+}

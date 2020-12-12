@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 BOWER_PATH=$(pwd)/vendor/bower-asset/
 VENDOR_PATH=$(dirname $BOWER_PATH)

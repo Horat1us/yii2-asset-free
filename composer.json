@@ -29,5 +29,10 @@
   },
   "scripts": {
     "test": "./test.sh"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
   }
 }

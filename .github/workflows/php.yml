@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '8.4', '8.5' ]
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+
+      - name: Check PHP Version
+        run: |
+          php -v
+          composer --version
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      # Fails the job if the lock can't be installed; test.sh would treat a failed install as a pass
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      # test.sh removes vendor/ and runs `composer install` itself, then checks that no bower-asset package was installed
+      - name: Run tests
+        run: composer test
